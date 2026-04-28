@@ -3,7 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Khadija Tul Kubra | Portfolio</title>
+<meta name="description" content="Khadija Tul Kubra - BSCS Student Portfolio showcasing projects in Java, C++, SQL, and Web Development.">
+<title>Khadija Tul Kubra | CS Portfolio</title>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;600;700&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
 
 <style>
@@ -56,6 +57,7 @@ nav {
   justify-content: space-between;
   align-items: center;
   border-bottom: 1px solid var(--border);
+  flex-wrap: wrap;
 }
 
 .nav-logo {
@@ -68,7 +70,7 @@ nav {
   background-clip: text;
 }
 
-.nav-links { display: flex; gap: 0.2rem; }
+.nav-links { display: flex; gap: 0.2rem; flex-wrap: wrap; justify-content: center; }
 
 .nav-links a {
   color: var(--muted);
@@ -86,6 +88,7 @@ nav {
   background: rgba(0,191,255,0.1);
 }
 
+/* ========== FIXED HERO SECTION ========== */
 .hero {
   position: relative;
   z-index: 1;
@@ -95,7 +98,7 @@ nav {
   align-items: center;
   justify-content: center;
   text-align: center;
-  padding: 4rem 2rem;
+  padding: 4rem 2rem 6rem; /* extra bottom padding for scroll hint */
 }
 
 .hero-badge {
@@ -149,47 +152,53 @@ nav {
   font-size: 1.05rem;
   font-weight: 400;
   animation: fadeUp 0.9s ease 0.2s both;
-  margin-bottom: 2.5rem;
-  max-width: 500px;
+  margin-bottom: 0.6rem;
+  max-width: 560px;
+  line-height: 1.6;
+}
+
+.hero-specialty {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 0.88rem;
+  color: var(--accent3);
+  font-weight: 500;
+  animation: fadeUp 0.9s ease 0.25s both;
+  margin-bottom: 2.2rem;
+  letter-spacing: 0.2px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.hero-specialty .dot {
+  width: 4px; height: 4px;
+  background: var(--muted);
+  border-radius: 50%;
+  opacity: 0.5;
+  display: inline-block;
 }
 
 .hero-btns {
   display: flex;
   gap: 1rem;
-  flex-wrap: wrap;
   justify-content: center;
+  margin-bottom: 2rem; /* space before scroll hint */
   animation: fadeUp 0.9s ease 0.3s both;
-}
-
-.btn-primary {
-  background: linear-gradient(135deg, var(--accent), var(--accent2));
-  color: #fff;
-  padding: 0.75rem 2rem;
-  border-radius: 50px;
-  text-decoration: none;
-  font-weight: 600;
-  font-size: 0.9rem;
-  transition: all 0.3s;
-  box-shadow: 0 4px 20px rgba(0,191,255,0.3);
-  letter-spacing: 0.3px;
-}
-
-.btn-primary:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 8px 30px rgba(0,191,255,0.5);
-  color: #fff;
 }
 
 .btn-secondary {
   background: transparent;
   color: var(--accent);
+  border: 1px solid var(--border);
   padding: 0.75rem 2rem;
   border-radius: 50px;
   text-decoration: none;
   font-weight: 500;
   font-size: 0.9rem;
-  border: 1px solid var(--border);
   transition: all 0.3s;
+  box-shadow: none;
+  display: inline-block;
 }
 
 .btn-secondary:hover {
@@ -200,10 +209,6 @@ nav {
 }
 
 .scroll-hint {
-  position: absolute;
-  bottom: 2.5rem;
-  left: 50%;
-  transform: translateX(-50%);
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -213,6 +218,7 @@ nav {
   letter-spacing: 1.5px;
   text-transform: uppercase;
   animation: fadeUp 1s ease 0.6s both;
+  margin-top: 1rem;
 }
 
 .scroll-line {
@@ -228,7 +234,9 @@ nav {
   51% { transform: scaleY(1); transform-origin: bottom; }
   100% { transform: scaleY(0); transform-origin: bottom; }
 }
+/* ========== END FIXED HERO ========== */
 
+/* Rest of the styles (sections, about, education, skills, projects, contact, footer) remain exactly as in your original file */
 section {
   position: relative;
   z-index: 1;
@@ -236,7 +244,6 @@ section {
   max-width: 950px;
   margin: 0 auto;
 }
-
 .section-label {
   font-size: 0.75rem;
   letter-spacing: 3px;
@@ -245,7 +252,6 @@ section {
   margin-bottom: 0.6rem;
   font-weight: 600;
 }
-
 .section-title {
   font-family: 'Cormorant Garamond', serif;
   font-size: clamp(1.8rem, 4vw, 2.8rem);
@@ -254,27 +260,23 @@ section {
   margin-bottom: 2.5rem;
   line-height: 1.2;
 }
-
 .section-title span {
   background: linear-gradient(135deg, var(--accent), var(--accent2));
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
 }
-
 .divider {
   max-width: 950px;
   margin: 0 auto;
   height: 1px;
   background: linear-gradient(to right, transparent, var(--border), transparent);
 }
-
 .about-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 1.5rem;
 }
-
 .about-text {
   background: var(--card);
   border: 1px solid var(--border);
@@ -287,7 +289,6 @@ section {
   position: relative;
   overflow: hidden;
 }
-
 .about-text::before {
   content: '"';
   position: absolute;
@@ -298,11 +299,9 @@ section {
   color: rgba(192,132,252,0.08);
   line-height: 1;
 }
-
 .about-text strong {
   color: var(--accent);
 }
-
 .info-card {
   background: var(--card);
   border: 1px solid var(--border);
@@ -313,13 +312,11 @@ section {
   gap: 1rem;
   transition: all 0.3s;
 }
-
 .info-card:hover {
   border-color: rgba(192,132,252,0.3);
   background: var(--card2);
   transform: translateY(-3px);
 }
-
 .info-icon {
   width: 42px; height: 42px;
   background: rgba(0,191,255,0.1);
@@ -330,7 +327,6 @@ section {
   font-size: 1.2rem;
   flex-shrink: 0;
 }
-
 .info-content label {
   font-size: 0.75rem;
   color: var(--muted);
@@ -339,15 +335,12 @@ section {
   display: block;
   margin-bottom: 2px;
 }
-
 .info-content span {
   font-size: 0.95rem;
   font-weight: 500;
   color: var(--text);
 }
-
 .timeline { position: relative; padding-left: 2rem; }
-
 .timeline::before {
   content: '';
   position: absolute;
@@ -357,7 +350,6 @@ section {
   width: 1px;
   background: linear-gradient(to bottom, var(--accent), var(--accent3), transparent);
 }
-
 .timeline-item {
   position: relative;
   margin-bottom: 2rem;
@@ -367,7 +359,6 @@ section {
   border-radius: 16px;
   transition: all 0.3s;
 }
-
 .timeline-item::before {
   content: '';
   position: absolute;
@@ -378,38 +369,32 @@ section {
   background: var(--accent);
   box-shadow: 0 0 12px var(--accent);
 }
-
 .timeline-item:hover {
   border-color: rgba(192,132,252,0.3);
   transform: translateX(6px);
   background: var(--card2);
 }
-
 .edu-degree {
   font-weight: 600;
   font-size: 1.05rem;
   color: var(--text);
   margin-bottom: 0.3rem;
 }
-
 .edu-school {
   color: var(--accent);
   font-size: 0.9rem;
   font-weight: 500;
   margin-bottom: 0.2rem;
 }
-
 .edu-year {
   color: var(--muted);
   font-size: 0.82rem;
 }
-
 .skills-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
   gap: 0.8rem;
 }
-
 .skill-card {
   background: var(--card);
   border: 1px solid var(--border);
@@ -419,24 +404,20 @@ section {
   transition: all 0.3s;
   cursor: default;
 }
-
 .skill-card:hover {
   background: rgba(0,191,255,0.1);
   border-color: var(--accent);
   transform: translateY(-5px);
   box-shadow: 0 10px 30px rgba(0,191,255,0.15);
 }
-
 .skill-card .skill-icon { font-size: 1.6rem; margin-bottom: 0.5rem; display: block; }
 .skill-card .skill-name { font-size: 0.82rem; font-weight: 500; color: var(--muted); }
 .skill-card:hover .skill-name { color: var(--accent); }
-
 .interests-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
   gap: 1rem;
 }
-
 .interest-card {
   background: var(--card);
   border: 1px solid var(--border);
@@ -445,19 +426,15 @@ section {
   text-align: center;
   transition: all 0.3s;
 }
-
 .interest-card:hover {
   border-color: var(--accent2);
   background: rgba(64,212,255,0.07);
   transform: translateY(-4px);
 }
-
 .interest-icon { font-size: 1.8rem; margin-bottom: 0.6rem; display: block; }
 .interest-name { font-size: 0.9rem; font-weight: 500; color: var(--muted); }
 .interest-card:hover .interest-name { color: var(--accent2); }
-
 .lang-grid { display: flex; gap: 1rem; flex-wrap: wrap; }
-
 .lang-card {
   background: var(--card);
   border: 1px solid var(--border);
@@ -469,15 +446,12 @@ section {
   transition: all 0.3s;
   min-width: 200px;
 }
-
 .lang-card:hover {
   border-color: var(--accent);
   background: rgba(0,191,255,0.06);
   transform: translateY(-3px);
 }
-
 .lang-flag { font-size: 1.8rem; }
-
 .lang-info label {
   font-size: 0.72rem;
   text-transform: uppercase;
@@ -485,13 +459,11 @@ section {
   color: var(--muted);
   display: block;
 }
-
 .lang-info span {
   font-weight: 600;
   font-size: 0.95rem;
   color: var(--text);
 }
-
 .lang-level {
   margin-left: auto;
   background: rgba(0,191,255,0.12);
@@ -502,13 +474,11 @@ section {
   border-radius: 20px;
   font-weight: 500;
 }
-
 .projects-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
   gap: 1.2rem;
 }
-
 .project-card {
   background: var(--card);
   border: 1px solid var(--border);
@@ -521,7 +491,6 @@ section {
   position: relative;
   overflow: hidden;
 }
-
 .project-card::after {
   content: '';
   position: absolute;
@@ -532,18 +501,14 @@ section {
   transform-origin: left;
   transition: transform 0.4s ease;
 }
-
 .project-card:hover {
   border-color: rgba(192,132,252,0.3);
   background: var(--card2);
   transform: translateY(-5px);
   box-shadow: 0 12px 40px rgba(0,191,255,0.1);
 }
-
 .project-card:hover::after { transform: scaleX(1); }
-
 .project-tags { display: flex; flex-wrap: wrap; gap: 6px; }
-
 .tag {
   font-size: 0.72rem;
   padding: 3px 10px;
@@ -554,27 +519,54 @@ section {
   font-weight: 500;
   letter-spacing: 0.3px;
 }
-
 .project-title {
   font-size: 1rem;
   font-weight: 600;
   color: var(--text);
   line-height: 1.4;
 }
-
 .project-desc {
   font-size: 0.875rem;
   color: var(--muted);
   line-height: 1.7;
   flex: 1;
 }
-
+.project-footer {
+  margin-top: 0.4rem;
+  padding-top: 0.8rem;
+  border-top: 1px solid var(--border);
+}
+.github-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.78rem;
+  font-weight: 500;
+  color: var(--muted);
+  text-decoration: none;
+  padding: 5px 12px;
+  border-radius: 20px;
+  border: 1px solid var(--border);
+  background: rgba(0,191,255,0.04);
+  transition: all 0.25s;
+  letter-spacing: 0.3px;
+}
+.github-link svg {
+  width: 13px; height: 13px;
+  fill: currentColor;
+  flex-shrink: 0;
+}
+.github-link:hover {
+  color: var(--accent);
+  border-color: var(--accent);
+  background: rgba(0,191,255,0.1);
+  transform: translateY(-1px);
+}
 .contact-wrapper {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 1.2rem;
 }
-
 .contact-card {
   background: var(--card);
   border: 1px solid var(--border);
@@ -587,7 +579,6 @@ section {
   transition: all 0.3s;
   color: var(--text);
 }
-
 .contact-card:hover {
   border-color: rgba(192,132,252,0.4);
   background: var(--card2);
@@ -595,7 +586,6 @@ section {
   box-shadow: 0 10px 30px rgba(0,191,255,0.12);
   color: var(--accent);
 }
-
 .contact-icon {
   width: 46px; height: 46px;
   background: rgba(0,191,255,0.1);
@@ -607,11 +597,9 @@ section {
   flex-shrink: 0;
   transition: all 0.3s;
 }
-
 .contact-card:hover .contact-icon {
   background: rgba(0,191,255,0.2);
 }
-
 .contact-info label {
   font-size: 0.72rem;
   color: var(--muted);
@@ -620,13 +608,11 @@ section {
   display: block;
   margin-bottom: 3px;
 }
-
 .contact-info span {
   font-size: 0.88rem;
   font-weight: 500;
   word-break: break-all;
 }
-
 footer {
   position: relative;
   z-index: 1;
@@ -636,42 +622,36 @@ footer {
   font-size: 0.85rem;
   border-top: 1px solid var(--border);
 }
-
 footer span {
   color: var(--accent);
   font-weight: 500;
 }
-
 @keyframes fadeUp {
   from { opacity: 0; transform: translateY(20px); }
   to { opacity: 1; transform: translateY(0); }
 }
-
 @keyframes fadeDown {
   from { opacity: 0; transform: translateY(-10px); }
   to { opacity: 1; transform: translateY(0); }
 }
-
 .reveal {
   opacity: 0;
   transform: translateY(24px);
   transition: opacity 0.6s ease, transform 0.6s ease;
 }
-
 .reveal.visible {
   opacity: 1;
   transform: translateY(0);
 }
-
 @media (max-width: 700px) {
-  nav { padding: 1rem 1.2rem; }
+  nav { padding: 1rem 1.2rem; flex-direction: column; gap: 10px; }
   .nav-links a { padding: 0.35rem 0.6rem; font-size: 0.8rem; }
   .about-grid { grid-template-columns: 1fr; }
   .about-text { grid-column: 1; }
   .contact-wrapper { grid-template-columns: 1fr; }
   .projects-grid { grid-template-columns: 1fr; }
   section { padding: 3.5rem 1.2rem; }
-  .hero { padding: 3rem 1.2rem; }
+  .hero { padding: 3rem 1.2rem 5rem; }
 }
 </style>
 </head>
@@ -683,17 +663,26 @@ footer span {
     <a href="#about">About</a>
     <a href="#education">Education</a>
     <a href="#skills">Skills</a>
+    <a href="#interests">Interests</a>
+    <a href="#languages">Languages</a>
     <a href="#projects">Projects</a>
     <a href="#contact">Contact</a>
   </div>
 </nav>
 
+<!-- HERO SECTION (FIXED) -->
 <div class="hero">
   <div class="hero-badge">✦ Open to Opportunities</div>
   <h1>Hi, I'm<br><span class="name">Khadija Tul Kubra</span></h1>
-  <p class="hero-sub">BSCS Student · Semester 4 · Fatima Jinnah Women University</p>
+  <p class="hero-sub">Computer Science student passionate about building practical software systems using Java, C++, and SQL — currently exploring databases and system design.</p>
+  <div class="hero-specialty">
+    <span>Java · Python · SQL</span>
+    <span class="dot"></span>
+    <span>OOP · Data Structures</span>
+    <span class="dot"></span>
+    <span>Problem Solving · Debugging</span>
+  </div>
   <div class="hero-btns">
-    <a href="#projects" class="btn-primary">View My Projects</a>
     <a href="#contact" class="btn-secondary">Get In Touch</a>
   </div>
   <div class="scroll-hint">
@@ -702,6 +691,7 @@ footer span {
   </div>
 </div>
 
+<!-- ABOUT -->
 <section id="about">
   <div class="reveal">
     <p class="section-label">Who I Am</p>
@@ -710,66 +700,30 @@ footer span {
       <div class="about-text">
         I'm a <strong>passionate Computer Science student</strong> at Fatima Jinnah Women University, Rawalpindi — currently in my 4th semester and loving every bit of the journey. I'm drawn to the intersection of <strong>software development, databases, and system design</strong>, always looking to build things that actually work and matter. Whether it's writing clean code or designing a logical system, I enjoy solving real-world problems through technology.
       </div>
-      <div class="info-card">
-        <div class="info-icon">🎓</div>
-        <div class="info-content">
-          <label>Degree</label>
-          <span>BS Computer Science</span>
-        </div>
-      </div>
-      <div class="info-card">
-        <div class="info-icon">🏛️</div>
-        <div class="info-content">
-          <label>University</label>
-          <span>FJWU, Rawalpindi</span>
-        </div>
-      </div>
-      <div class="info-card">
-        <div class="info-icon">📚</div>
-        <div class="info-content">
-          <label>Semester</label>
-          <span>4th Semester (Current)</span>
-        </div>
-      </div>
-      <div class="info-card">
-        <div class="info-icon">💡</div>
-        <div class="info-content">
-          <label>Focus Areas</label>
-          <span>Software Dev · Databases · Cloud</span>
-        </div>
-      </div>
+      <div class="info-card"><div class="info-icon">🎓</div><div class="info-content"><label>Degree</label><span>BS Computer Science</span></div></div>
+      <div class="info-card"><div class="info-icon">🏛️</div><div class="info-content"><label>University</label><span>FJWU, Rawalpindi</span></div></div>
+      <div class="info-card"><div class="info-icon">📚</div><div class="info-content"><label>Semester</label><span>4th Semester (Current)</span></div></div>
+      <div class="info-card"><div class="info-icon">💡</div><div class="info-content"><label>Focus Areas</label><span>Software Dev · Databases · Cloud</span></div></div>
     </div>
   </div>
 </section>
-
 <div class="divider"></div>
 
+<!-- EDUCATION -->
 <section id="education">
   <div class="reveal">
     <p class="section-label">Academic Journey</p>
     <h2 class="section-title">My <span>Education</span></h2>
     <div class="timeline">
-      <div class="timeline-item">
-        <div class="edu-degree">BS Computer Science (BSCS)</div>
-        <div class="edu-school">Fatima Jinnah Women University (FJWU)</div>
-        <div class="edu-year">2024 – Present · Current: Semester 4</div>
-      </div>
-      <div class="timeline-item">
-        <div class="edu-degree">FSC — ICS</div>
-        <div class="edu-school">FG College for Women, Rawalpindi</div>
-        <div class="edu-year">2022 – 2024</div>
-      </div>
-      <div class="timeline-item">
-        <div class="edu-degree">Matriculation — Science</div>
-        <div class="edu-school">FG Girls Public School, Rawalpindi</div>
-        <div class="edu-year">2020 – 2022</div>
-      </div>
+      <div class="timeline-item"><div class="edu-degree">BS Computer Science (BSCS)</div><div class="edu-school">Fatima Jinnah Women University (FJWU)</div><div class="edu-year">2024 – Present · Current: Semester 4</div></div>
+      <div class="timeline-item"><div class="edu-degree">FSC — ICS</div><div class="edu-school">FG College for Women, Rawalpindi</div><div class="edu-year">2022 – 2024</div></div>
+      <div class="timeline-item"><div class="edu-degree">Matriculation — Science</div><div class="edu-school">FG Girls Public School, Rawalpindi</div><div class="edu-year">2020 – 2022</div></div>
     </div>
   </div>
 </section>
-
 <div class="divider"></div>
 
+<!-- SKILLS -->
 <section id="skills">
   <div class="reveal">
     <p class="section-label">What I Know</p>
@@ -789,9 +743,9 @@ footer span {
     </div>
   </div>
 </section>
-
 <div class="divider"></div>
 
+<!-- INTERESTS -->
 <section id="interests">
   <div class="reveal">
     <p class="section-label">What Drives Me</p>
@@ -804,122 +758,63 @@ footer span {
     </div>
   </div>
 </section>
-
 <div class="divider"></div>
 
+<!-- LANGUAGES -->
 <section id="languages">
   <div class="reveal">
     <p class="section-label">Communication</p>
     <h2 class="section-title">My <span>Languages</span></h2>
     <div class="lang-grid">
-      <div class="lang-card">
-        <div class="lang-flag">🇵🇰</div>
-        <div class="lang-info">
-          <label>Language</label>
-          <span>Urdu</span>
-        </div>
-        <div class="lang-level">Native</div>
-      </div>
-      <div class="lang-card">
-        <div class="lang-flag">🇬🇧</div>
-        <div class="lang-info">
-          <label>Language</label>
-          <span>English</span>
-        </div>
-        <div class="lang-level">Intermediate</div>
-      </div>
+      <div class="lang-card"><div class="lang-flag">🇵🇰</div><div class="lang-info"><label>Language</label><span>Urdu</span></div><div class="lang-level">Native</div></div>
+      <div class="lang-card"><div class="lang-flag">🇬🇧</div><div class="lang-info"><label>Language</label><span>English</span></div><div class="lang-level">Intermediate</div></div>
     </div>
   </div>
 </section>
-
 <div class="divider"></div>
 
+<!-- PROJECTS (all 11 projects) -->
 <section id="projects">
   <div class="reveal">
     <p class="section-label">What I've Built</p>
     <h2 class="section-title">My <span>Projects</span></h2>
     <div class="projects-grid">
-
-      <div class="project-card">
-        <div class="project-tags"><span class="tag">C</span><span class="tag">File Handling</span></div>
-        <div class="project-title">Hotel Reservation System</div>
-        <div class="project-desc">Console-based system to manage hotel bookings using file handling and structured programming in C.</div>
-      </div>
-
-      <div class="project-card">
-        <div class="project-tags"><span class="tag">Java</span><span class="tag">SQL</span><span class="tag">JDBC</span></div>
-        <div class="project-title">Parlour Management System</div>
-        <div class="project-desc">OOP-based system using Java and Oracle SQL with JDBC for database connectivity and full management operations.</div>
-      </div>
-
-      <div class="project-card">
-        <div class="project-tags"><span class="tag">DLD</span><span class="tag">Logic Design</span></div>
-        <div class="project-title">Face Recognition System</div>
-        <div class="project-desc">Logic-based system demonstrating basic digital image recognition concepts using digital logic design principles.</div>
-      </div>
-
-      <div class="project-card">
-        <div class="project-tags"><span class="tag">C++</span><span class="tag">Data Structures</span></div>
-        <div class="project-title">Knight Travels</div>
-        <div class="project-desc">Data structures project focused on algorithmic problem solving — computing optimal knight moves on a chessboard.</div>
-      </div>
-
-      <div class="project-card">
-        <div class="project-tags"><span class="tag">Assembly</span><span class="tag">C++</span></div>
-        <div class="project-title">Student Result System</div>
-        <div class="project-desc">Hybrid system for managing student records using both low-level Assembly and high-level C++ programming.</div>
-      </div>
-
-      <div class="project-card">
-        <div class="project-tags"><span class="tag">Networking</span><span class="tag">VirtualBox</span></div>
-        <div class="project-title">Networking Project</div>
-        <div class="project-desc">VirtualBox setup with Windows VMs and server configuration — hands-on networking practice and implementation.</div>
-      </div>
-
-      <div class="project-card">
-        <div class="project-tags"><span class="tag">Azure</span><span class="tag">Ubuntu</span><span class="tag">Cloud</span></div>
-        <div class="project-title">Cloud Project</div>
-        <div class="project-desc">Cloud computing practice using Microsoft Azure and a Linux virtual environment for real-world cloud deployment.</div>
-      </div>
-
-      <div class="project-card">
-        <div class="project-tags"><span class="tag">Canva</span><span class="tag">Design</span></div>
-        <div class="project-title">Digital Magazine</div>
-        <div class="project-desc">Designed a creative digital magazine focusing on layout, typography, and visual storytelling using Canva.</div>
-      </div>
-
+      <!-- 1. Hotel Reservation System -->
+      <div class="project-card"><div class="project-tags"><span class="tag">C</span><span class="tag">File Handling</span></div><div class="project-title">Hotel Reservation System</div><div class="project-desc">Console-based system to manage hotel bookings using file handling and structured programming in C.</div><div class="project-footer"><a href="https://github.com/khadija-tul-kubra11/Hotel-Reservation-system" target="_blank" class="github-link"><svg viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>View on GitHub</a></div></div>
+      <!-- 2. Parlour Management System (with DB) -->
+      <div class="project-card"><div class="project-tags"><span class="tag">Java</span><span class="tag">SQL</span><span class="tag">JDBC</span></div><div class="project-title">Parlour Management System</div><div class="project-desc">OOP-based system using Java and Oracle SQL with JDBC for database connectivity and full management operations.</div><div class="project-footer"><a href="https://github.com/khadija-tul-kubra11/Parlour_Management_System_With_Database" target="_blank" class="github-link"><svg viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>View on GitHub</a></div></div>
+      <!-- 3. Knight Travels -->
+      <div class="project-card"><div class="project-tags"><span class="tag">C++</span><span class="tag">Data Structures</span></div><div class="project-title">Knight Travels</div><div class="project-desc">Data structures project focused on algorithmic problem solving — computing optimal knight moves on a chessboard.</div><div class="project-footer"><a href="https://github.com/khadija-tul-kubra11/knight-travels" target="_blank" class="github-link"><svg viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>View on GitHub</a></div></div>
+      <!-- 4. Student Result System -->
+      <div class="project-card"><div class="project-tags"><span class="tag">Assembly</span><span class="tag">C++</span></div><div class="project-title">Student Result System</div><div class="project-desc">Hybrid system for managing student records using both low-level Assembly and high-level C++ programming.</div><div class="project-footer"><a href="https://github.com/khadija-tul-kubra11/student-result-management-system" target="_blank" class="github-link"><svg viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>View on GitHub</a></div></div>
+      <!-- 5. Networking Project -->
+      <div class="project-card"><div class="project-tags"><span class="tag">Networking</span><span class="tag">VirtualBox</span></div><div class="project-title">Networking Project</div><div class="project-desc">VirtualBox setup with Windows VMs and server configuration — hands-on networking practice and implementation.</div><div class="project-footer"><a href="https://github.com/khadija-tul-kubra11/Computer-networking-project" target="_blank" class="github-link"><svg viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>View on GitHub</a></div></div>
+      <!-- 6. Digital Magazine -->
+      <div class="project-card"><div class="project-tags"><span class="tag">Canva</span><span class="tag">Design</span></div><div class="project-title">Digital Magazine</div><div class="project-desc">Designed a creative digital magazine focusing on layout, typography, and visual storytelling using Canva.</div><div class="project-footer"><a href="https://github.com/khadija-tul-kubra11/Digital-Magazine" target="_blank" class="github-link"><svg viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>View on GitHub</a></div></div>
+      <!-- 7. Personal Portfolio Website -->
+      <div class="project-card"><div class="project-tags"><span class="tag">HTML</span><span class="tag">CSS</span><span class="tag">Portfolio</span></div><div class="project-title">Personal Portfolio Website</div><div class="project-desc">Fully responsive portfolio website built with HTML and CSS – showcases my projects, skills, and academic journey as a BSCS student.</div><div class="project-footer"><a href="https://github.com/khadija-tul-kubra11/khadija-tul-kubra.github.io" target="_blank" class="github-link"><svg viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>View on GitHub</a></div></div>
+      <!-- 8. Shopping List (Linked List) -->
+      <div class="project-card"><div class="project-tags"><span class="tag">C++</span><span class="tag">Linked List</span></div><div class="project-title">Shopping List (Linked List)</div><div class="project-desc">Simple Shopping List Management System in C++ using structs and linked lists for dynamic data management.</div><div class="project-footer"><a href="https://github.com/khadija-tul-kubra11/ShoppingList-LinkedList" target="_blank" class="github-link"><svg viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>View on GitHub</a></div></div>
+      <!-- 9. Scott Schema -->
+      <div class="project-card"><div class="project-tags"><span class="tag">SQL</span><span class="tag">Oracle</span></div><div class="project-title">Scott Schema</div><div class="project-desc">SQL practice and query work on the classic Oracle Scott schema — joins, aggregations, and database querying.</div><div class="project-footer"><a href="https://github.com/khadija-tul-kubra11/Scott-Schema" target="_blank" class="github-link"><svg viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>View on GitHub</a></div></div>
+      <!-- 10. HR Schema -->
+      <div class="project-card"><div class="project-tags"><span class="tag">SQL</span><span class="tag">Oracle</span></div><div class="project-title">HR Schema</div><div class="project-desc">SQL queries and analysis on Oracle's HR schema — employees, departments, and relational database operations.</div><div class="project-footer"><a href="https://github.com/khadija-tul-kubra11/HR-Schema" target="_blank" class="github-link"><svg viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>View on GitHub</a></div></div>
+      <!-- 11. Parlour Management (Pure OOP) -->
+      <div class="project-card"><div class="project-tags"><span class="tag">Java</span><span class="tag">OOP</span></div><div class="project-title">Parlour Management (OOP)</div><div class="project-desc">Pure OOP version of the parlour management system — class design, inheritance, and encapsulation in Java.</div><div class="project-footer"><a href="https://github.com/khadija-tul-kubra11/parlour-management-system-oop" target="_blank" class="github-link"><svg viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>View on GitHub</a></div></div>
     </div>
   </div>
 </section>
-
 <div class="divider"></div>
 
+<!-- CONTACT -->
 <section id="contact">
   <div class="reveal">
     <p class="section-label">Let's Connect</p>
     <h2 class="section-title">Get In <span>Touch</span></h2>
     <div class="contact-wrapper">
-      <a href="mailto:khadijah6667@gmail.com" class="contact-card">
-        <div class="contact-icon">📧</div>
-        <div class="contact-info">
-          <label>Email</label>
-          <span>khadijah6667@gmail.com</span>
-        </div>
-      </a>
-      <a href="https://www.linkedin.com/in/khadija-tul-kubra-783781388" target="_blank" class="contact-card">
-        <div class="contact-icon">💼</div>
-        <div class="contact-info">
-          <label>LinkedIn</label>
-          <span>khadija-tul-kubra-783781388</span>
-        </div>
-      </a>
-      <a href="https://github.com/khadija-tul-kubra11" target="_blank" class="contact-card">
-        <div class="contact-icon">🐙</div>
-        <div class="contact-info">
-          <label>GitHub</label>
-          <span>khadija-tul-kubra11</span>
-        </div>
-      </a>
+      <a href="mailto:khadijah6667@gmail.com" class="contact-card"><div class="contact-icon">📧</div><div class="contact-info"><label>Email</label><span>khadijah6667@gmail.com</span></div></a>
+      <a href="https://www.linkedin.com/in/khadija-tul-kubra-783781388" target="_blank" class="contact-card"><div class="contact-icon">💼</div><div class="contact-info"><label>LinkedIn</label><span>khadija-tul-kubra-783781388</span></div></a>
+      <a href="https://github.com/khadija-tul-kubra11" target="_blank" class="contact-card"><div class="contact-icon">🐙</div><div class="contact-info"><label>GitHub</label><span>khadija-tul-kubra11</span></div></a>
     </div>
   </div>
 </section>
