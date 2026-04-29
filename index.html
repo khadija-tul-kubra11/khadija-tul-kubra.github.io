@@ -88,7 +88,7 @@ nav {
   background: rgba(0,191,255,0.1);
 }
 
-/* ========== FIXED HERO SECTION ========== */
+/* ========== HERO ========== */
 .hero {
   position: relative;
   z-index: 1;
@@ -98,7 +98,7 @@ nav {
   align-items: center;
   justify-content: center;
   text-align: center;
-  padding: 4rem 2rem 6rem; /* extra bottom padding for scroll hint */
+  padding: 4rem 2rem 6rem;
 }
 
 .hero-badge {
@@ -183,7 +183,7 @@ nav {
   display: flex;
   gap: 1rem;
   justify-content: center;
-  margin-bottom: 2rem; /* space before scroll hint */
+  margin-bottom: 2rem;
   animation: fadeUp 0.9s ease 0.3s both;
 }
 
@@ -234,9 +234,74 @@ nav {
   51% { transform: scaleY(1); transform-origin: bottom; }
   100% { transform: scaleY(0); transform-origin: bottom; }
 }
-/* ========== END FIXED HERO ========== */
 
-/* Rest of the styles (sections, about, education, skills, projects, contact, footer) remain exactly as in your original file */
+/* ========== STATS SECTION ========== */
+.stats-section {
+  position: relative;
+  z-index: 1;
+  padding: 2.5rem 2rem;
+  max-width: 950px;
+  margin: 0 auto;
+}
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0.8rem;
+}
+.stat-card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: left;
+  padding: 1.2rem 1.2rem 1.2rem 1.6rem;
+  position: relative;
+  overflow: hidden;
+  transition: all 0.3s ease;
+  cursor: default;
+}
+/* left cyan bar on every card */
+.stat-card::before {
+  content: '';
+  position: absolute;
+  left: 0; top: 20%; bottom: 20%;
+  width: 3px;
+  background: linear-gradient(to bottom, var(--accent), rgba(0,191,255,0.2));
+  border-radius: 0 3px 3px 0;
+  box-shadow: 0 0 8px rgba(0,191,255,0.4);
+}
+.stat-card::after { display: none; }
+.stat-card:hover {
+  border-color: rgba(0,191,255,0.4);
+  background: var(--card2);
+  transform: translateY(-3px);
+  box-shadow: 0 8px 20px rgba(0,191,255,0.12);
+}
+.stat-number {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 2rem;
+  font-weight: 700;
+  line-height: 1;
+  background: linear-gradient(135deg, var(--accent), var(--accent2), var(--accent3));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  margin-bottom: 0.3rem;
+  display: block;
+  letter-spacing: -0.5px;
+}
+.stat-label {
+  font-size: 0.6rem;
+  color: var(--muted);
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  font-weight: 500;
+  line-height: 1.3;
+}
+
+/* ========== SECTIONS ========== */
 section {
   position: relative;
   z-index: 1;
@@ -299,9 +364,7 @@ section {
   color: rgba(192,132,252,0.08);
   line-height: 1;
 }
-.about-text strong {
-  color: var(--accent);
-}
+.about-text strong { color: var(--accent); }
 .info-card {
   background: var(--card);
   border: 1px solid var(--border);
@@ -344,9 +407,7 @@ section {
 .timeline::before {
   content: '';
   position: absolute;
-  left: 0;
-  top: 8px;
-  bottom: 8px;
+  left: 0; top: 8px; bottom: 8px;
   width: 1px;
   background: linear-gradient(to bottom, var(--accent), var(--accent3), transparent);
 }
@@ -362,8 +423,7 @@ section {
 .timeline-item::before {
   content: '';
   position: absolute;
-  left: -2.5rem;
-  top: 1.7rem;
+  left: -2.5rem; top: 1.7rem;
   width: 10px; height: 10px;
   border-radius: 50%;
   background: var(--accent);
@@ -374,22 +434,9 @@ section {
   transform: translateX(6px);
   background: var(--card2);
 }
-.edu-degree {
-  font-weight: 600;
-  font-size: 1.05rem;
-  color: var(--text);
-  margin-bottom: 0.3rem;
-}
-.edu-school {
-  color: var(--accent);
-  font-size: 0.9rem;
-  font-weight: 500;
-  margin-bottom: 0.2rem;
-}
-.edu-year {
-  color: var(--muted);
-  font-size: 0.82rem;
-}
+.edu-degree { font-weight: 600; font-size: 1.05rem; color: var(--text); margin-bottom: 0.3rem; }
+.edu-school { color: var(--accent); font-size: 0.9rem; font-weight: 500; margin-bottom: 0.2rem; }
+.edu-year { color: var(--muted); font-size: 0.82rem; }
 .skills-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
@@ -459,11 +506,7 @@ section {
   color: var(--muted);
   display: block;
 }
-.lang-info span {
-  font-weight: 600;
-  font-size: 0.95rem;
-  color: var(--text);
-}
+.lang-info span { font-weight: 600; font-size: 0.95rem; color: var(--text); }
 .lang-level {
   margin-left: auto;
   background: rgba(0,191,255,0.12);
@@ -473,6 +516,55 @@ section {
   padding: 3px 10px;
   border-radius: 20px;
   font-weight: 500;
+}
+
+/* ========== PROJECT FILTER ========== */
+.filter-bar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+  margin-bottom: 2rem;
+  align-items: center;
+  justify-content: center;
+}
+.filter-label {
+  font-size: 0.75rem;
+  color: var(--muted);
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  font-weight: 500;
+  margin-right: 0.4rem;
+}
+.filter-btn {
+  background: var(--card);
+  border: 1px solid var(--border);
+  color: var(--muted);
+  padding: 0.4rem 1.1rem;
+  border-radius: 50px;
+  font-size: 0.78rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.25s ease;
+  font-family: 'Outfit', sans-serif;
+  letter-spacing: 0.3px;
+  position: relative;
+  overflow: hidden;
+}
+.filter-btn::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: rgba(0,191,255,0.08);
+  opacity: 0;
+  transition: opacity 0.25s;
+}
+.filter-btn:hover { border-color: rgba(0,191,255,0.4); color: var(--accent3); transform: translateY(-1px); }
+.filter-btn:hover::before { opacity: 1; }
+.filter-btn.active {
+  background: rgba(0,191,255,0.15);
+  border-color: var(--accent);
+  color: var(--accent);
+  box-shadow: 0 0 14px rgba(0,191,255,0.18);
 }
 .projects-grid {
   display: grid;
@@ -508,6 +600,12 @@ section {
   box-shadow: 0 12px 40px rgba(0,191,255,0.1);
 }
 .project-card:hover::after { transform: scaleX(1); }
+.project-card.hidden { display: none; }
+.project-card.fade-in { animation: fadeInCard 0.3s ease both; }
+@keyframes fadeInCard {
+  from { opacity: 0; transform: translateY(12px) scale(0.97); }
+  to { opacity: 1; transform: translateY(0) scale(1); }
+}
 .project-tags { display: flex; flex-wrap: wrap; gap: 6px; }
 .tag {
   font-size: 0.72rem;
@@ -519,18 +617,8 @@ section {
   font-weight: 500;
   letter-spacing: 0.3px;
 }
-.project-title {
-  font-size: 1rem;
-  font-weight: 600;
-  color: var(--text);
-  line-height: 1.4;
-}
-.project-desc {
-  font-size: 0.875rem;
-  color: var(--muted);
-  line-height: 1.7;
-  flex: 1;
-}
+.project-title { font-size: 1rem; font-weight: 600; color: var(--text); line-height: 1.4; }
+.project-desc { font-size: 0.875rem; color: var(--muted); line-height: 1.7; flex: 1; }
 .project-footer {
   margin-top: 0.4rem;
   padding-top: 0.8rem;
@@ -551,22 +639,59 @@ section {
   transition: all 0.25s;
   letter-spacing: 0.3px;
 }
-.github-link svg {
-  width: 13px; height: 13px;
-  fill: currentColor;
-  flex-shrink: 0;
-}
+.github-link svg { width: 13px; height: 13px; fill: currentColor; flex-shrink: 0; }
 .github-link:hover {
   color: var(--accent);
   border-color: var(--accent);
   background: rgba(0,191,255,0.1);
   transform: translateY(-1px);
 }
-.contact-wrapper {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 1.2rem;
+.github-all-wrap { display: flex; justify-content: center; margin-top: 2.5rem; }
+.github-all-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  background: var(--card);
+  border: 1px solid rgba(0,191,255,0.25);
+  color: var(--accent);
+  padding: 0.85rem 2.2rem;
+  border-radius: 50px;
+  text-decoration: none;
+  font-size: 0.9rem;
+  font-weight: 600;
+  letter-spacing: 0.4px;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
 }
+.github-all-btn::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(0,191,255,0.08), rgba(64,212,255,0.05));
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+.github-all-btn:hover {
+  border-color: var(--accent);
+  transform: translateY(-3px);
+  box-shadow: 0 8px 28px rgba(0,191,255,0.2), 0 0 0 1px rgba(0,191,255,0.15);
+  color: var(--accent2);
+}
+.github-all-btn:hover::before { opacity: 1; }
+.github-all-btn svg { width: 16px; height: 16px; fill: currentColor; flex-shrink: 0; }
+.btn-arrow { font-size: 1rem; transition: transform 0.3s ease; display: inline-block; }
+.github-all-btn:hover .btn-arrow { transform: translateX(4px); }
+.no-results {
+  display: none;
+  grid-column: 1 / -1;
+  text-align: center;
+  padding: 3rem;
+  color: var(--muted);
+  font-size: 0.95rem;
+}
+.no-results.visible { display: block; }
+.contact-wrapper { display: grid; grid-template-columns: 1fr 1fr; gap: 1.2rem; }
 .contact-card {
   background: var(--card);
   border: 1px solid var(--border);
@@ -597,9 +722,7 @@ section {
   flex-shrink: 0;
   transition: all 0.3s;
 }
-.contact-card:hover .contact-icon {
-  background: rgba(0,191,255,0.2);
-}
+.contact-card:hover .contact-icon { background: rgba(0,191,255,0.2); }
 .contact-info label {
   font-size: 0.72rem;
   color: var(--muted);
@@ -608,11 +731,7 @@ section {
   display: block;
   margin-bottom: 3px;
 }
-.contact-info span {
-  font-size: 0.88rem;
-  font-weight: 500;
-  word-break: break-all;
-}
+.contact-info span { font-size: 0.88rem; font-weight: 500; word-break: break-all; }
 footer {
   position: relative;
   z-index: 1;
@@ -622,10 +741,7 @@ footer {
   font-size: 0.85rem;
   border-top: 1px solid var(--border);
 }
-footer span {
-  color: var(--accent);
-  font-weight: 500;
-}
+footer span { color: var(--accent); font-weight: 500; }
 @keyframes fadeUp {
   from { opacity: 0; transform: translateY(20px); }
   to { opacity: 1; transform: translateY(0); }
@@ -634,15 +750,9 @@ footer span {
   from { opacity: 0; transform: translateY(-10px); }
   to { opacity: 1; transform: translateY(0); }
 }
-.reveal {
-  opacity: 0;
-  transform: translateY(24px);
-  transition: opacity 0.6s ease, transform 0.6s ease;
-}
-.reveal.visible {
-  opacity: 1;
-  transform: translateY(0);
-}
+.reveal { opacity: 0; transform: translateY(24px); transition: opacity 0.6s ease, transform 0.6s ease; }
+.reveal.visible { opacity: 1; transform: translateY(0); }
+
 @media (max-width: 700px) {
   nav { padding: 1rem 1.2rem; flex-direction: column; gap: 10px; }
   .nav-links a { padding: 0.35rem 0.6rem; font-size: 0.8rem; }
@@ -652,6 +762,11 @@ footer span {
   .projects-grid { grid-template-columns: 1fr; }
   section { padding: 3.5rem 1.2rem; }
   .hero { padding: 3rem 1.2rem 5rem; }
+  /* Mobile: 2x2 grid for stats */
+  .stats-grid { grid-template-columns: repeat(2, 1fr); gap: 0.6rem; }
+  .stats-section { padding: 1.5rem 1rem; }
+  .stat-card { padding: 0.9rem 0.8rem 0.9rem 1.2rem; }
+  .stat-number { font-size: 1.5rem; }
 }
 </style>
 </head>
@@ -661,6 +776,7 @@ footer span {
   <div class="nav-logo">KTK</div>
   <div class="nav-links">
     <a href="#about">About</a>
+    <a href="#stats">Stats</a>
     <a href="#education">Education</a>
     <a href="#skills">Skills</a>
     <a href="#interests">Interests</a>
@@ -670,7 +786,7 @@ footer span {
   </div>
 </nav>
 
-<!-- HERO SECTION (FIXED) -->
+<!-- HERO -->
 <div class="hero">
   <div class="hero-badge">✦ Open to Opportunities</div>
   <h1>Hi, I'm<br><span class="name">Khadija Tul Kubra</span></h1>
@@ -691,6 +807,32 @@ footer span {
   </div>
 </div>
 
+<!-- STATS SECTION -->
+<div class="divider"></div>
+<div id="stats" class="stats-section">
+  <div class="reveal">
+    <div class="stats-grid">
+      <div class="stat-card">
+        <span class="stat-number" data-target="11" data-suffix="+">0</span>
+        <span class="stat-label">Projects Built</span>
+      </div>
+      <div class="stat-card">
+        <span class="stat-number" data-target="7" data-suffix="+">0</span>
+        <span class="stat-label">Languages Known</span>
+      </div>
+      <div class="stat-card">
+        <span class="stat-number" data-target="4" data-suffix="th">0</span>
+        <span class="stat-label">Current Semester</span>
+      </div>
+      <div class="stat-card">
+        <span class="stat-number" data-target="11" data-suffix="+">0</span>
+        <span class="stat-label">GitHub Repos</span>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="divider"></div>
+
 <!-- ABOUT -->
 <section id="about">
   <div class="reveal">
@@ -702,7 +844,7 @@ footer span {
       </div>
       <div class="info-card"><div class="info-icon">🎓</div><div class="info-content"><label>Degree</label><span>BS Computer Science</span></div></div>
       <div class="info-card"><div class="info-icon">🏛️</div><div class="info-content"><label>University</label><span>FJWU, Rawalpindi</span></div></div>
-      <div class="info-card"><div class="info-icon">📚</div><div class="info-content"><label>Semester</label><span>4th Semester (Current)</span></div></div>
+      <div class="info-card"><div class="info-icon">📍</div><div class="info-content"><label>Location</label><span>Rawalpindi, Pakistan</span></div></div>
       <div class="info-card"><div class="info-icon">💡</div><div class="info-content"><label>Focus Areas</label><span>Software Dev · Databases · Cloud</span></div></div>
     </div>
   </div>
@@ -773,34 +915,97 @@ footer span {
 </section>
 <div class="divider"></div>
 
-<!-- PROJECTS (all 11 projects) -->
+<!-- PROJECTS -->
 <section id="projects">
   <div class="reveal">
     <p class="section-label">What I've Built</p>
     <h2 class="section-title">My <span>Projects</span></h2>
-    <div class="projects-grid">
-      <!-- 1. Hotel Reservation System -->
-      <div class="project-card"><div class="project-tags"><span class="tag">C</span><span class="tag">File Handling</span></div><div class="project-title">Hotel Reservation System</div><div class="project-desc">Console-based system to manage hotel bookings using file handling and structured programming in C.</div><div class="project-footer"><a href="https://github.com/khadija-tul-kubra11/Hotel-Reservation-system" target="_blank" class="github-link"><svg viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>View on GitHub</a></div></div>
-      <!-- 2. Parlour Management System (with DB) -->
-      <div class="project-card"><div class="project-tags"><span class="tag">Java</span><span class="tag">SQL</span><span class="tag">JDBC</span></div><div class="project-title">Parlour Management System</div><div class="project-desc">OOP-based system using Java and Oracle SQL with JDBC for database connectivity and full management operations.</div><div class="project-footer"><a href="https://github.com/khadija-tul-kubra11/Parlour_Management_System_With_Database" target="_blank" class="github-link"><svg viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>View on GitHub</a></div></div>
-      <!-- 3. Knight Travels -->
-      <div class="project-card"><div class="project-tags"><span class="tag">C++</span><span class="tag">Data Structures</span></div><div class="project-title">Knight Travels</div><div class="project-desc">Data structures project focused on algorithmic problem solving — computing optimal knight moves on a chessboard.</div><div class="project-footer"><a href="https://github.com/khadija-tul-kubra11/knight-travels" target="_blank" class="github-link"><svg viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>View on GitHub</a></div></div>
-      <!-- 4. Student Result System -->
-      <div class="project-card"><div class="project-tags"><span class="tag">Assembly</span><span class="tag">C++</span></div><div class="project-title">Student Result System</div><div class="project-desc">Hybrid system for managing student records using both low-level Assembly and high-level C++ programming.</div><div class="project-footer"><a href="https://github.com/khadija-tul-kubra11/student-result-management-system" target="_blank" class="github-link"><svg viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>View on GitHub</a></div></div>
-      <!-- 5. Networking Project -->
-      <div class="project-card"><div class="project-tags"><span class="tag">Networking</span><span class="tag">VirtualBox</span></div><div class="project-title">Networking Project</div><div class="project-desc">VirtualBox setup with Windows VMs and server configuration — hands-on networking practice and implementation.</div><div class="project-footer"><a href="https://github.com/khadija-tul-kubra11/Computer-networking-project" target="_blank" class="github-link"><svg viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>View on GitHub</a></div></div>
-      <!-- 6. Digital Magazine -->
-      <div class="project-card"><div class="project-tags"><span class="tag">Canva</span><span class="tag">Design</span></div><div class="project-title">Digital Magazine</div><div class="project-desc">Designed a creative digital magazine focusing on layout, typography, and visual storytelling using Canva.</div><div class="project-footer"><a href="https://github.com/khadija-tul-kubra11/Digital-Magazine" target="_blank" class="github-link"><svg viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>View on GitHub</a></div></div>
-      <!-- 7. Personal Portfolio Website -->
-      <div class="project-card"><div class="project-tags"><span class="tag">HTML</span><span class="tag">CSS</span><span class="tag">Portfolio</span></div><div class="project-title">Personal Portfolio Website</div><div class="project-desc">Fully responsive portfolio website built with HTML and CSS – showcases my projects, skills, and academic journey as a BSCS student.</div><div class="project-footer"><a href="https://github.com/khadija-tul-kubra11/khadija-tul-kubra.github.io" target="_blank" class="github-link"><svg viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>View on GitHub</a></div></div>
-      <!-- 8. Shopping List (Linked List) -->
-      <div class="project-card"><div class="project-tags"><span class="tag">C++</span><span class="tag">Linked List</span></div><div class="project-title">Shopping List (Linked List)</div><div class="project-desc">Simple Shopping List Management System in C++ using structs and linked lists for dynamic data management.</div><div class="project-footer"><a href="https://github.com/khadija-tul-kubra11/ShoppingList-LinkedList" target="_blank" class="github-link"><svg viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>View on GitHub</a></div></div>
-      <!-- 9. Scott Schema -->
-      <div class="project-card"><div class="project-tags"><span class="tag">SQL</span><span class="tag">Oracle</span></div><div class="project-title">Scott Schema</div><div class="project-desc">SQL practice and query work on the classic Oracle Scott schema — joins, aggregations, and database querying.</div><div class="project-footer"><a href="https://github.com/khadija-tul-kubra11/Scott-Schema" target="_blank" class="github-link"><svg viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>View on GitHub</a></div></div>
-      <!-- 10. HR Schema -->
-      <div class="project-card"><div class="project-tags"><span class="tag">SQL</span><span class="tag">Oracle</span></div><div class="project-title">HR Schema</div><div class="project-desc">SQL queries and analysis on Oracle's HR schema — employees, departments, and relational database operations.</div><div class="project-footer"><a href="https://github.com/khadija-tul-kubra11/HR-Schema" target="_blank" class="github-link"><svg viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>View on GitHub</a></div></div>
-      <!-- 11. Parlour Management (Pure OOP) -->
-      <div class="project-card"><div class="project-tags"><span class="tag">Java</span><span class="tag">OOP</span></div><div class="project-title">Parlour Management (OOP)</div><div class="project-desc">Pure OOP version of the parlour management system — class design, inheritance, and encapsulation in Java.</div><div class="project-footer"><a href="https://github.com/khadija-tul-kubra11/parlour-management-system-oop" target="_blank" class="github-link"><svg viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>View on GitHub</a></div></div>
+    <div class="filter-bar">
+      <span class="filter-label">Filter:</span>
+      <button class="filter-btn active" data-filter="all">All</button>
+      <button class="filter-btn" data-filter="Java">Java</button>
+      <button class="filter-btn" data-filter="C++">C++</button>
+      <button class="filter-btn" data-filter="C">C</button>
+      <button class="filter-btn" data-filter="SQL">SQL</button>
+      <button class="filter-btn" data-filter="HTML">HTML / CSS</button>
+      <button class="filter-btn" data-filter="Assembly">Assembly</button>
+      <button class="filter-btn" data-filter="Networking">Networking</button>
+    </div>
+    <div class="projects-grid" id="projectsGrid">
+      <div class="project-card" data-tags="C">
+        <div class="project-tags"><span class="tag">C</span><span class="tag">File Handling</span></div>
+        <div class="project-title">Hotel Reservation System</div>
+        <div class="project-desc">Console-based system to manage hotel bookings using file handling and structured programming in C.</div>
+        <div class="project-footer"><a href="https://github.com/khadija-tul-kubra11/Hotel-Reservation-system" target="_blank" class="github-link"><svg viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>View on GitHub</a></div>
+      </div>
+      <div class="project-card" data-tags="Java SQL">
+        <div class="project-tags"><span class="tag">Java</span><span class="tag">SQL</span><span class="tag">JDBC</span></div>
+        <div class="project-title">Parlour Management System</div>
+        <div class="project-desc">OOP-based system using Java and Oracle SQL with JDBC for database connectivity and full management operations.</div>
+        <div class="project-footer"><a href="https://github.com/khadija-tul-kubra11/Parlour_Management_System_With_Database" target="_blank" class="github-link"><svg viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>View on GitHub</a></div>
+      </div>
+      <div class="project-card" data-tags="C++">
+        <div class="project-tags"><span class="tag">C++</span><span class="tag">Data Structures</span></div>
+        <div class="project-title">Knight Travels</div>
+        <div class="project-desc">Data structures project focused on algorithmic problem solving — computing optimal knight moves on a chessboard.</div>
+        <div class="project-footer"><a href="https://github.com/khadija-tul-kubra11/knight-travels" target="_blank" class="github-link"><svg viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>View on GitHub</a></div>
+      </div>
+      <div class="project-card" data-tags="Assembly C++">
+        <div class="project-tags"><span class="tag">Assembly</span><span class="tag">C++</span></div>
+        <div class="project-title">Student Result System</div>
+        <div class="project-desc">Hybrid system for managing student records using both low-level Assembly and high-level C++ programming.</div>
+        <div class="project-footer"><a href="https://github.com/khadija-tul-kubra11/student-result-management-system" target="_blank" class="github-link"><svg viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>View on GitHub</a></div>
+      </div>
+      <div class="project-card" data-tags="Networking">
+        <div class="project-tags"><span class="tag">Networking</span><span class="tag">VirtualBox</span></div>
+        <div class="project-title">Networking Project</div>
+        <div class="project-desc">VirtualBox setup with Windows VMs and server configuration — hands-on networking practice and implementation.</div>
+        <div class="project-footer"><a href="https://github.com/khadija-tul-kubra11/Computer-networking-project" target="_blank" class="github-link"><svg viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>View on GitHub</a></div>
+      </div>
+      <div class="project-card" data-tags="other">
+        <div class="project-tags"><span class="tag">Canva</span><span class="tag">Design</span></div>
+        <div class="project-title">Digital Magazine</div>
+        <div class="project-desc">Designed a creative digital magazine focusing on layout, typography, and visual storytelling using Canva.</div>
+        <div class="project-footer"><a href="https://github.com/khadija-tul-kubra11/Digital-Magazine" target="_blank" class="github-link"><svg viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>View on GitHub</a></div>
+      </div>
+      <div class="project-card" data-tags="HTML">
+        <div class="project-tags"><span class="tag">HTML</span><span class="tag">CSS</span><span class="tag">Portfolio</span></div>
+        <div class="project-title">Personal Portfolio Website</div>
+        <div class="project-desc">Fully responsive portfolio website built with HTML and CSS – showcases my projects, skills, and academic journey as a BSCS student.</div>
+        <div class="project-footer"><a href="https://github.com/khadija-tul-kubra11/khadija-tul-kubra.github.io" target="_blank" class="github-link"><svg viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>View on GitHub</a></div>
+      </div>
+      <div class="project-card" data-tags="C++">
+        <div class="project-tags"><span class="tag">C++</span><span class="tag">Linked List</span></div>
+        <div class="project-title">Shopping List (Linked List)</div>
+        <div class="project-desc">Simple Shopping List Management System in C++ using structs and linked lists for dynamic data management.</div>
+        <div class="project-footer"><a href="https://github.com/khadija-tul-kubra11/ShoppingList-LinkedList" target="_blank" class="github-link"><svg viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>View on GitHub</a></div>
+      </div>
+      <div class="project-card" data-tags="SQL">
+        <div class="project-tags"><span class="tag">SQL</span><span class="tag">Oracle</span></div>
+        <div class="project-title">Scott Schema</div>
+        <div class="project-desc">SQL practice and query work on the classic Oracle Scott schema — joins, aggregations, and database querying.</div>
+        <div class="project-footer"><a href="https://github.com/khadija-tul-kubra11/Scott-Schema" target="_blank" class="github-link"><svg viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>View on GitHub</a></div>
+      </div>
+      <div class="project-card" data-tags="SQL">
+        <div class="project-tags"><span class="tag">SQL</span><span class="tag">Oracle</span></div>
+        <div class="project-title">HR Schema</div>
+        <div class="project-desc">SQL queries and analysis on Oracle's HR schema — employees, departments, and relational database operations.</div>
+        <div class="project-footer"><a href="https://github.com/khadija-tul-kubra11/HR-Schema" target="_blank" class="github-link"><svg viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>View on GitHub</a></div>
+      </div>
+      <div class="project-card" data-tags="Java">
+        <div class="project-tags"><span class="tag">Java</span><span class="tag">OOP</span></div>
+        <div class="project-title">Parlour Management (OOP)</div>
+        <div class="project-desc">Pure OOP version of the parlour management system — class design, inheritance, and encapsulation in Java.</div>
+        <div class="project-footer"><a href="https://github.com/khadija-tul-kubra11/parlour-management-system-oop" target="_blank" class="github-link"><svg viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>View on GitHub</a></div>
+      </div>
+      <div class="no-results" id="noResults">No projects found for this filter. 🔍</div>
+    </div>
+    <div class="github-all-wrap">
+      <a href="https://github.com/khadija-tul-kubra11" target="_blank" class="github-all-btn">
+        <svg viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>
+        View All Projects on GitHub
+        <span class="btn-arrow">→</span>
+      </a>
     </div>
   </div>
 </section>
@@ -825,15 +1030,67 @@ footer span {
 
 <script>
   const reveals = document.querySelectorAll('.reveal');
-  const observer = new IntersectionObserver((entries) => {
+  const revealObserver = new IntersectionObserver((entries) => {
     entries.forEach(e => {
-      if (e.isIntersecting) {
-        e.target.classList.add('visible');
-        observer.unobserve(e.target);
-      }
+      if (e.isIntersecting) { e.target.classList.add('visible'); revealObserver.unobserve(e.target); }
     });
   }, { threshold: 0.1 });
-  reveals.forEach(r => observer.observe(r));
+  reveals.forEach(r => revealObserver.observe(r));
+
+  function animateCounter(el) {
+    const target = parseInt(el.dataset.target);
+    const suffix = el.dataset.suffix || '';
+    const duration = 1600;
+    const startTime = performance.now();
+    function update(currentTime) {
+      const elapsed = currentTime - startTime;
+      const progress = Math.min(elapsed / duration, 1);
+      const eased = progress === 1 ? 1 : 1 - Math.pow(2, -10 * progress);
+      const current = Math.round(eased * target);
+      el.textContent = current.toLocaleString() + suffix;
+      if (progress < 1) requestAnimationFrame(update);
+    }
+    requestAnimationFrame(update);
+  }
+
+  const statsSection = document.querySelector('.stats-section');
+  let statsAnimated = false;
+  const statsObserver = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting && !statsAnimated) {
+        statsAnimated = true;
+        document.querySelectorAll('.stat-number[data-target]').forEach(el => animateCounter(el));
+      }
+    });
+  }, { threshold: 0.4 });
+  if (statsSection) statsObserver.observe(statsSection);
+
+  const filterBtns = document.querySelectorAll('.filter-btn');
+  const projectCards = document.querySelectorAll('.project-card[data-tags]');
+  const noResults = document.getElementById('noResults');
+  filterBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      filterBtns.forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      const filter = btn.dataset.filter;
+      let visibleCount = 0;
+      projectCards.forEach(card => {
+        const tags = card.dataset.tags || '';
+        const matches = filter === 'all' || tags.split(' ').includes(filter);
+        if (matches) {
+          card.classList.remove('hidden');
+          card.classList.remove('fade-in');
+          void card.offsetWidth;
+          card.classList.add('fade-in');
+          visibleCount++;
+        } else {
+          card.classList.add('hidden');
+          card.classList.remove('fade-in');
+        }
+      });
+      if (noResults) noResults.classList.toggle('visible', visibleCount === 0);
+    });
+  });
 </script>
 </body>
 </html>
